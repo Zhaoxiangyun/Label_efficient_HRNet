@@ -32,7 +32,6 @@ class ContrastiveLoss(nn.Module):
         self.ignore_label = ignore_label
 
     def forward(self, features, labels):
-        pdb.set_trace()
         feature_size_h = 64
         feature_size_w = 32
         features = F.interpolate(features, size=(feature_size_w, feature_size_h), mode='bilinear')
@@ -109,13 +108,13 @@ class ContrastiveLoss(nn.Module):
         index_sum = index_sum + ind2
         log_likelihood = torch.sum(log_likelihood,1)/index_sum
         loss = torch.mean(log_likelihood)
-        if  torch.eq(loss,0):
-            pdb.set_trace()
-        
-        nan_mask = torch.isnan(loss)
-        if nan_mask:
-            pdb.set_trace()
-        
+        #if  torch.eq(loss,0):
+        #    pdb.set_trace()
+        #
+        #nan_mask = torch.isnan(loss)
+        #if nan_mask:
+        #    pdb.set_trace()
+        #
         return loss
 
 
